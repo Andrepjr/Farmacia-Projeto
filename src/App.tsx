@@ -1,27 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Navbar from './components/navbar/Navbar'
-import Footer from './components/footer/Footer'
-import Home from './paginas/home/Home'
+import React from 'react';
+import './App.css';
+
+import Navbar from './components/navbar/Navbar';
+import Footer from './components/footer/Footer';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './paginas/home/Home';
+import ListaCategoria from './categoria/listaCategoria/ListaCategoria';
+import Produto from './paginas/produto/Produto';
+
+
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-
     <>
-    
-      <Navbar />
-      <div className="min-h-[80vh]">
-      <Home />
-      </div>
-      <Footer />
+        <BrowserRouter>
+          <Navbar />
+          <div className='min-h-[80vh]'>
+            <Routes>
+              <Route path="/home" element={<Home />} />
+              <Route path="/categoria" element={<ListaCategoria />} />
+              <Route path="/produto" element={<Produto />} />
+            </Routes>
+          </div>
+          <Footer />
+        </BrowserRouter>
     </>
-    
-
-  )
+  );
 }
-
-export default App
+export default App;
